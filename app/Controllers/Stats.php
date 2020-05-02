@@ -92,7 +92,7 @@ class Stats extends BaseController
                 'down_total'    => $stats->count_all(strtotime('-365 days')),
                 'down_last_week'=> $stats->count_all(strtotime('-7 days')),
                 'down_by_month' => $stats->retrieve_all_by_month(strtotime('-365 days')),
-                'down_last_five'=> $stats->most_downloaded(5)        
+                'down_last_five'=> $stats->most_downloaded(10)        
             ];
                 
             (new TransactionsModel())->save(new Transaction(

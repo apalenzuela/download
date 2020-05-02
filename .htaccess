@@ -1,0 +1,2 @@
+# SetEnv CI_ENVIRONMENT development
+SetEnv CI_ENVIRONMENT production

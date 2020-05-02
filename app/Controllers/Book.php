@@ -52,12 +52,16 @@ class Book extends BaseController
         {
             $authenticate = new Authenticate();
             $json = $this->request->hasHeader(PRM_TOKEN)
-                    ? $authenticate->isValid($this->request->getHeader(PRM_TOKEN)->getValue())
+                    ? $this->request->getHeader(PRM_TOKEN)->getValue()
                     : NULL;
             
             $json = ($json == NULL)
                     ? $this->request->getGet(PRM_TOKEN)
                     : $json;
+            
+            $json = empty($json)
+                    ? NULL
+                    : $authenticate->isValid($json);
            
             if($json == NULL)
             {
